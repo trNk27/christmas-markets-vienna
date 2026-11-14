@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Vienna Christmas Markets</title>
+  <meta name="description" content="Scope out Vienna's Christmas markets before you go: where they are, whether they're open when you plan to visit, photos, vibe, what they sell and how busy they typically get.">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0b1020">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b1020'/%3E%3Cpath d='M16 4l2.6 8.4L27 16l-8.4 2.6L16 28l-2.6-9.4L5 16l8.4-3.6z' fill='%23f4b860'/%3E%3C/svg%3E">
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('xm-theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = (window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l2.2 7.2L21.5 12l-7.3 2.8L12 22l-2.2-7.2L2.5 12l7.3-2.8z" fill="currentColor"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16l4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-next" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="currentColor"/></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></g></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 11v6M12 7.5v.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-locate" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.5" fill="currentColor"/><circle cx="12" cy="12" r="7.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.4 7-12a7 7 0 0 0-14 0c0 5.6 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.5" fill="currentColor"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3.5 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-tram" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="13" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 2h8M12 2v3M5 12h14M8 21l1.5-3M16 21l-1.5-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-route" viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+      <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-photo" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="9" cy="10" r="1.8" fill="currentColor"/><path d="M4 17l5-5 4 4 3-3 4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+      <symbol id="i-cube" viewBox="0 0 24 24"><path d="M12 2.5l8.5 4.8v9.4L12 21.5l-8.5-4.8V7.3z M3.5 7.3L12 12l8.5-4.7M12 12v9.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+      <symbol id="i-lantern" viewBox="0 0 24 24"><path d="M9 4h6M12 2v2M8 7h8l-1 2v7l1 2H8l1-2V9z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 10.5c1 1.2 1 2.3 0 3.5-1-1.2-1-2.3 0-3.5z" fill="currentColor"/></symbol>
+    </defs>
+  </svg>
+
+  <a class="skip-link" href="#marketList">Skip to market list</a>
+
+  <main class="app" id="app">
+    <aside class="sidebar" id="sidebar" aria-label="Markets and filters">
+      <header class="masthead">
+        <div class="snow" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="masthead-top">
+          <div class="brand">
+            <svg class="brand-mark" aria-hidden="true"><use href="#i-star"/></svg>
+            <div>
+              <h1>Vienna Christmas Markets</h1>
+              <p class="tagline">Scope out every market before you head out</p>
+            </div>
+          </div>
+          <div class="masthead-actions">
+            <button type="button" class="icon-btn" id="aboutBtn" aria-label="About this site and credits"><svg aria-hidden="true"><use href="#i-info"/></svg></button>
+            <button type="button" class="icon-btn" id="themeBtn" aria-label="Switch to daytime theme"><svg aria-hidden="true"><use href="#i-sun"/></svg></button>
+          </div>
+        </div>
+        <p class="today-line" id="todayLine" aria-live="off"></p>
+      </header>
+
+      <section class="planner" aria-labelledby="plannerHeading">
+        <h2 id="plannerHeading" class="planner-title">When are you going?</h2>
+        <div class="when-chips" role="group" aria-label="Quick picks" id="whenChips"></div>
+        <div class="when-inputs">
+          <label class="field">
+            <span class="field-label">Date</span>
+            <input type="date" id="whenDate">
+          </label>
+          <label class="field">
+            <span class="field-label">Time</span>
+            <input type="time" id="whenTime" step="900">
+          </label>
+        </div>
+        <p class="when-summary" id="whenSummary" aria-live="polite"></p>
+      </section>
+
+      <section class="filters" aria-label="Search and filter">
+        <div class="search">
+          <svg aria-hidden="true"><use href="#i-search"/></svg>
+          <input type="search" id="search" placeholder="Search markets, places, things to buy…" aria-label="Search markets" autocomplete="off">
+        </div>
+        <div class="filter-row">
+          <button type="button" class="toggle" id="openOnly" aria-pressed="false"><span class="toggle-track" aria-hidden="true"><span class="toggle-knob"></span></span><span>Open at selected time</span></button>
+          <label class="sort">
+            <span class="visually-hidden">Sort by</span>
+            <select id="sortSel" aria-label="Sort markets">
+              <option value="recommended">Recommended</option>
+              <option value="az">A–Z</option>
+              <option value="latest">Closing latest</option>
+              <option value="nearest" disabled>Nearest (locate first)</option>
+            </select>
+          </label>
+        </div>
+        <div class="tag-chips" role="group" aria-label="Filter by feature (all selected must match)" id="tagChips"></div>
+      </section>
+
+      <div class="results-bar">
+        <p id="resultCount" aria-live="polite"></p>
+        <button type="button" class="link-btn" id="clearBtn" hidden>Clear filters</button>
+      </div>
+
+      <nav aria-label="Christmas markets" class="list-nav">
+        <ul class="market-list" id="marketList" tabindex="-1"></ul>
+        <div class="empty-state" id="emptyState" hidden>
+          <svg aria-hidden="true"><use href="#i-lantern"/></svg>
+          <p><strong>No market matches all of that.</strong><br>Try fewer filters or another time.</p>
+          <button type="button" class="btn" id="emptyClear">Clear filters</button>
+        </div>
+      </nav>
+
+      <footer class="about-foot">
+        <p>Map data © OpenStreetMap contributors, tiles © CARTO. Photos from Wikimedia Commons under their respective licences (credited per photo). Opening times researched <span class="verified-date"></span> — always check the official site before travelling.</p>
+      </footer>
+    </aside>
+
+    <section class="map-wrap" aria-label="Map of Christmas markets">
+      <div id="map"></div>
+      <button type="button" class="map-btn" id="locateBtn" aria-label="Show my location and sort by distance"><svg aria-hidden="true"><use href="#i-locate"/></svg></button>
+    </section>
+
+    <section class="detail" id="detail" aria-labelledby="detailTitle" hidden tabindex="-1"></section>
+  </main>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+    <div class="lb-stage">
+      <img id="lbImg" alt="">
+    </div>
+    <button type="button" class="lb-btn lb-close" id="lbClose" aria-label="Close photo viewer"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+    <button type="button" class="lb-btn lb-prev" id="lbPrev" aria-label="Previous photo"><svg aria-hidden="true"><use href="#i-back"/></svg></button>
+    <button type="button" class="lb-btn lb-next" id="lbNext" aria-label="Next photo"><svg aria-hidden="true"><use href="#i-next"/></svg></button>
+    <div class="lb-meta">
+      <p class="lb-caption" id="lbCaption"></p>
+      <p class="lb-credit" id="lbCredit"></p>
+      <p class="lb-count" id="lbCount"></p>
+    </div>
+  </div>
+
+  <dialog class="about-dialog" id="aboutDialog" aria-labelledby="aboutTitle">
+    <form method="dialog">
+      <h2 id="aboutTitle">About this tracker</h2>
+      <p>A planning aid for Vienna's Christmas markets: pick when you're going and every status, the map and the crowd estimate follow that moment. All times are Vienna time.</p>
+      <p><strong>Crowds:</strong> there is no live crowd data yet. The busyness shown is a typical estimate based on the market's popularity, the hour and the day — not a measurement.</p>
+      <p><strong>Credits:</strong> map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>, tiles © <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>. Photos from Wikimedia Commons under their respective licences — each photo shows its author and licence. Heading font Fraunces (SIL OFL).</p>
+      <p>Opening times researched <span class="verified-date"></span>. Hours change — always check the official site before travelling.</p>
+      <button class="btn" value="close">Close</button>
+    </form>
+  </dialog>
+
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="data/markets.js"></script>
+  <script src="js/status.js"></script>
+  <script src="js/crowd.js"></script>
+  <!-- vendor/three.min.js and js/diorama.js are injected lazily by app.js the first time a 3D model is needed -->
+  <script src="js/app.js"></script>
+</body>
+</html>
