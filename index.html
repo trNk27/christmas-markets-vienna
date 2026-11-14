@@ -37,6 +37,7 @@
       <symbol id="i-route" viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
       <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
       <symbol id="i-photo" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="9" cy="10" r="1.8" fill="currentColor"/><path d="M4 17l5-5 4 4 3-3 4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+      <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="7" r="2.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="17" r="2.2" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
       <symbol id="i-cube" viewBox="0 0 24 24"><path d="M12 2.5l8.5 4.8v9.4L12 21.5l-8.5-4.8V7.3z M3.5 7.3L12 12l8.5-4.7M12 12v9.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
       <symbol id="i-lantern" viewBox="0 0 24 24"><path d="M9 4h6M12 2v2M8 7h8l-1 2v7l1 2H8l1-2V9z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 10.5c1 1.2 1 2.3 0 3.5-1-1.2-1-2.3 0-3.5z" fill="currentColor"/></symbol>
     </defs>
@@ -53,7 +54,7 @@
             <svg class="brand-mark" aria-hidden="true"><use href="#i-star"/></svg>
             <div>
               <h1>Vienna Christmas Markets</h1>
-              <p class="tagline">Scope out every market before you head out</p>
+              <p class="tagline">Scope out every market first</p>
             </div>
           </div>
           <div class="masthead-actions">
@@ -61,29 +62,34 @@
             <button type="button" class="icon-btn" id="themeBtn" aria-label="Switch to daytime theme"><svg aria-hidden="true"><use href="#i-sun"/></svg></button>
           </div>
         </div>
-        <p class="today-line" id="todayLine" aria-live="off"></p>
       </header>
 
       <section class="planner" aria-labelledby="plannerHeading">
-        <h2 id="plannerHeading" class="planner-title">When are you going?</h2>
+        <div class="planner-head">
+          <h2 id="plannerHeading" class="planner-title">When are you going?</h2>
+          <p class="today-line" id="todayLine"></p>
+        </div>
         <div class="when-chips" role="group" aria-label="Quick picks" id="whenChips"></div>
         <div class="when-inputs">
           <label class="field">
-            <span class="field-label">Date</span>
+            <span class="visually-hidden">Date (Vienna)</span>
             <input type="date" id="whenDate">
           </label>
           <label class="field">
-            <span class="field-label">Time</span>
+            <span class="visually-hidden">Time (Vienna)</span>
             <input type="time" id="whenTime" step="900">
           </label>
         </div>
-        <p class="when-summary" id="whenSummary" aria-live="polite"></p>
+        <p class="visually-hidden" id="whenSummary" aria-live="polite"></p>
       </section>
 
       <section class="filters" aria-label="Search and filter">
-        <div class="search">
-          <svg aria-hidden="true"><use href="#i-search"/></svg>
-          <input type="search" id="search" placeholder="Search markets, places, things to buy…" aria-label="Search markets" autocomplete="off">
+        <div class="filter-row">
+          <div class="search">
+            <svg aria-hidden="true"><use href="#i-search"/></svg>
+            <input type="search" id="search" placeholder="Search markets, goods…" aria-label="Search markets" autocomplete="off">
+          </div>
+          <button type="button" class="filters-btn" id="filtersBtn" aria-expanded="false" aria-controls="tagChips"><svg class="ic" aria-hidden="true"><use href="#i-sliders"/></svg><span>Filters</span><span id="filtersCount"></span><svg class="ic chev" aria-hidden="true"><use href="#i-next"/></svg></button>
         </div>
         <div class="filter-row">
           <button type="button" class="toggle" id="openOnly" aria-pressed="false"><span class="toggle-track" aria-hidden="true"><span class="toggle-knob"></span></span><span>Open at selected time</span></button>
@@ -97,7 +103,8 @@
             </select>
           </label>
         </div>
-        <div class="tag-chips" role="group" aria-label="Filter by feature (all selected must match)" id="tagChips"></div>
+        <div class="tag-chips tag-chips--active" id="activeTags" role="group" aria-label="Active filters" hidden></div>
+        <div class="tag-chips" role="group" aria-label="Filter by feature (all selected must match)" id="tagChips" hidden></div>
       </section>
 
       <div class="results-bar">
@@ -115,7 +122,7 @@
       </nav>
 
       <footer class="about-foot">
-        <p>Map data © OpenStreetMap contributors, tiles © CARTO. Photos from Wikimedia Commons under their respective licences (credited per photo). Opening times researched <span class="verified-date"></span> — always check the official site before travelling.</p>
+        <p>Map data and tiles © OpenStreetMap contributors. Photos from Wikimedia Commons under their respective licences (credited per photo). Opening times researched <span class="verified-date"></span> — always check the official site before travelling.</p>
       </footer>
     </aside>
 
@@ -146,7 +153,7 @@
       <h2 id="aboutTitle">About this tracker</h2>
       <p>A planning aid for Vienna's Christmas markets: pick when you're going and every status, the map and the crowd estimate follow that moment. All times are Vienna time.</p>
       <p><strong>Crowds:</strong> there is no live crowd data yet. The busyness shown is a typical estimate based on the market's popularity, the hour and the day — not a measurement.</p>
-      <p><strong>Credits:</strong> map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>, tiles © <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>. Photos from Wikimedia Commons under their respective licences — each photo shows its author and licence. Heading font Fraunces (SIL OFL).</p>
+      <p><strong>Credits:</strong> map data and tiles © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>. Photos from Wikimedia Commons under their respective licences — each photo shows its author and licence. Heading font Fraunces (SIL OFL).</p>
       <p>Opening times researched <span class="verified-date"></span>. Hours change — always check the official site before travelling.</p>
       <button class="btn" value="close">Close</button>
     </form>

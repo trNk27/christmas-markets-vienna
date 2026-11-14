@@ -95,23 +95,9 @@
 
   // ---------------------------------------------------------------- map
   var map, tiles, markers = {}, userMarker;
-  // Primary: CARTO basemaps (free subdomain hosts; the bare basemaps.cartocdn.com host now answers
-  // every tile with an "API key required" image). Fallback: OSM standard tiles, CSS-darkened at night,
-  // used automatically if CARTO tiles fail to load (blocked network, outage).
-  var ATTR_OSM = '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors';
-  var PROVIDERS = [
-    {
-      name: 'carto',
-      url: { dark: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', light: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png' },
-      opts: { subdomains: 'abcd', maxZoom: 19, attribution: ATTR_OSM + ' © <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>' }
-    },
-    {
-      name: 'osm',
-      url: { dark: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', light: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png' },
-      opts: { maxZoom: 19, attribution: ATTR_OSM }
-    }
-  ];
-  var providerIdx = 0;
+  // OpenStreetMap standard tiles in both themes; the evening theme darkens them with a CSS filter.
+  var TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+  var TILE_ATTR = '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>';
   var LABEL_ZOOM = 15;
 
   function initMap() {
@@ -147,22 +133,9 @@
   }
 
   function setTiles() {
-    if (!map) return;
-    if (tiles) map.removeLayer(tiles);
-    var prov = PROVIDERS[providerIdx];
-    var layer = L.tileLayer(prov.url[state.theme] || prov.url.dark, prov.opts);
-    var loaded = 0, failed = 0, switching = false;
-    layer.on('tileload', function () { loaded++; });
-    layer.on('tileerror', function () {
-      failed++;
-      if (!switching && !loaded && failed >= 4 && providerIdx < PROVIDERS.length - 1 && layer === tiles) {
-        switching = true;
-        // Defer: removing a layer inside its own tile callbacks confuses Leaflet's grid loop.
-        setTimeout(function () { if (layer === tiles) { providerIdx++; setTiles(); } }, 0);
-      }
-    });
-    tiles = layer.addTo(map);
-    map.getContainer().setAttribute('data-tiles', prov.name);
+    // One tile layer for both themes: the theme only swaps a CSS filter, so the layer is created once.
+    if (!map || tiles) return;
+    tiles = L.tileLayer(TILE_URL, { maxZoom: 19, attribution: TILE_ATTR }).addTo(map);
   }
 
   var tipPermanent = null;
@@ -248,7 +221,7 @@
     var sat = MS.addDays(today, toSat), sun = MS.addDays(today, toSun);
     var tonightDate = now.minutes >= 21 * 60 ? MS.addDays(today, 1) : today;
     return [
-      { key: 'now', label: 'Now', when: null },
+      { key: 'now', label: 'Now', when: null, title: 'Live status for right now — updates every 30 s' },
       { key: 'tonight', label: tonightDate === today ? 'Tonight 19:00' : 'Tomorrow 19:00', when: { date: tonightDate, time: '19:00' } },
       { key: 'tomorrow', label: 'Tomorrow', when: { date: MS.addDays(today, 1), time: '17:00' }, title: MS.fmtDay(MS.addDays(today, 1)) + ', 17:00' },
       { key: 'sat', label: 'Sat ' + MS.fmtShort(sat).split(' ')[0], when: { date: sat, time: '17:00' }, title: MS.fmtDay(sat) + ', 17:00' },
@@ -261,7 +234,7 @@
     picks.forEach(function (p) {
       var active = p.when ? (state.when && state.when.date === p.when.date && state.when.time === p.when.time) : !state.when;
       html += '<button type="button" class="chip chip--when' + (active ? ' is-active' : '') + '" data-key="' + p.key + '" aria-pressed="' + active + '"' +
-        (p.title ? ' title="' + esc(p.title) + '"' : '') + '>' + (p.key === 'now' ? '<span class="live-dot" aria-hidden="true"></span>' : '') + esc(p.label) + '</button>';
+        (p.title ? ' title="' + esc(p.title) + '"' : '') + '>' + (p.key === 'now' ? '<span class="live-dot" aria-hidden="true"></span>' : '') + esc(p.label) + (p.key === 'now' && active ? '<span class="chip-sub"> · live</span>' : '') + '</button>';
     });
     var box = $('whenChips');
     var focusedKey = document.activeElement && box.contains(document.activeElement) ? document.activeElement.getAttribute('data-key') : null;
@@ -293,7 +266,8 @@
 
   function renderToday() {
     var p = viennaNow();
-    $('todayLine').innerHTML = icon('i-clock') + '<span>' + esc(MS.fmtLong(p.isoDate)) + ' · <strong>' + p.time + '</strong> in Vienna</span>';
+    $('todayLine').innerHTML = '<span class="visually-hidden">Now in Vienna: </span>' + esc(MS.fmtDay(p.isoDate)) + ' · <strong>' + p.time + '</strong>';
+    $('todayLine').setAttribute('title', MS.fmtLong(p.isoDate) + ', ' + p.time + ' in Vienna');
   }
 
   // ---------------------------------------------------------------- list
@@ -380,6 +354,17 @@
   }
 
   function renderTags() {
+    var n = state.tags.length;
+    $('filtersCount').textContent = n ? ' · ' + n : '';
+    $('filtersBtn').setAttribute('aria-label', 'Filters' + (n ? ', ' + n + ' active' : ''));
+    $('filtersBtn').classList.toggle('has-active', n > 0);
+    var expanded = $('filtersBtn').getAttribute('aria-expanded') === 'true';
+    var act = $('activeTags');
+    act.hidden = expanded || !n;
+    act.innerHTML = state.tags.map(function (t) {
+      return '<button type="button" class="chip chip--tag chip--rm is-active" data-rm="' + esc(t) + '" aria-label="Remove filter ' + esc(tagLabel(t)) + '">' + esc(tagLabel(t)) +
+        '<svg class="ic" aria-hidden="true"><use href="#i-close"/></svg></button>';
+    }).join('');
     var present = {};
     MARKETS.forEach(function (m) { (m.tags || []).forEach(function (t) { present[t] = (present[t] || 0) + 1; }); });
     $('tagChips').innerHTML = TAGS.filter(function (t) { return present[t[0]]; }).map(function (t) {
@@ -818,8 +803,25 @@
       if (!b) return;
       var t = b.getAttribute('data-tag'), i = state.tags.indexOf(t);
       if (i === -1) state.tags.push(t); else state.tags.splice(i, 1);
-      b.classList.toggle('is-active', i === -1);
-      b.setAttribute('aria-pressed', String(i === -1));
+      renderTags();
+      var nb = $('tagChips').querySelector('[data-tag="' + t + '"]');
+      if (nb) nb.focus();
+      renderList();
+    });
+    $('filtersBtn').addEventListener('click', function () {
+      var open = this.getAttribute('aria-expanded') !== 'true';
+      this.setAttribute('aria-expanded', String(open));
+      $('tagChips').hidden = !open;
+      renderTags();
+    });
+    $('activeTags').addEventListener('click', function (e) {
+      var b = e.target.closest('[data-rm]');
+      if (!b) return;
+      var i = state.tags.indexOf(b.getAttribute('data-rm'));
+      if (i !== -1) state.tags.splice(i, 1);
+      renderTags();
+      var next = $('activeTags').querySelector('[data-rm]');
+      (next && !$('activeTags').hidden ? next : $('filtersBtn')).focus();
       renderList();
     });
     $('clearBtn').addEventListener('click', clearFilters);
