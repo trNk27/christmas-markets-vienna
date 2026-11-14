@@ -283,10 +283,13 @@ svg.ic, .icon-btn svg, .map-btn svg { width: 1em; height: 1em; flex: none; }
 .card-img--ph .ic { width: 34px; height: 34px; opacity: 0.8; }
 .card-body { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
 .card-title { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 1.02rem; line-height: 1.2; color: var(--text); }
-.card-loc { display: flex; align-items: center; gap: 5px; font-size: 0.8rem; color: var(--muted); flex-wrap: wrap; }
+.card-loc { display: flex; align-items: center; gap: 5px; font-size: 0.8rem; color: var(--muted); min-width: 0; }
+.card-loc-t { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .card-loc .ic { color: var(--muted); }
 .card-dist { color: var(--text-2); }
-.card-kw { display: flex; flex-wrap: wrap; gap: 4px; }
+/* One row of whole chips: chips that would wrap to a second row are clipped away; a single over-long chip ellipsizes. */
+.card-kw { display: flex; flex-wrap: wrap; gap: 4px; min-width: 0; height: 22px; overflow: hidden; }
+.card-kw .kw { max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 18px; }
 .kw { display: inline-block; padding: 2px 8px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--line); color: var(--text-2); font-size: 0.75rem; line-height: 1.5; }
 .card-crowd { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: var(--text-2); }
 .card-crowd:empty { display: none; }
@@ -558,7 +561,8 @@ svg.ic, .icon-btn svg, .map-btn svg { width: 1em; height: 1em; flex: none; }
 .lb-next { right: 14px; top: 50%; transform: translateY(-50%); }
 .lb-meta { padding: 10px 20px 18px; text-align: center; }
 .lb-caption { margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: 1.05rem; }
-.lb-credit { margin: 4px 0 0; font-size: 0.8rem; color: #c3c9d6; }
+.lb-credit { margin: 4px auto 0; max-width: 70ch; font-size: 0.8rem; color: #c3c9d6; overflow-wrap: anywhere; }
+.lb-caption { max-width: 70ch; margin-left: auto; margin-right: auto; }
 .lb-credit a { color: #ffd38f; }
 .lb-count { margin: 4px 0 0; font-size: 0.75rem; color: #aab2c4; font-variant-numeric: tabular-nums; }
 .lightbox :focus-visible { outline-color: #ffd38f; }

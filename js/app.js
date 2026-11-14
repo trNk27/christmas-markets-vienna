@@ -90,7 +90,10 @@
     if (meta) meta.setAttribute('content', t === 'dark' ? '#0b1020' : '#f5f2ec');
     if (persist) store('xm-theme', t);
     setTiles();
-    if (dio.handle && state.selected) remountDiorama();
+    if (dio.handle && state.selected) {
+      if (typeof dio.handle.setTheme === 'function') { try { dio.handle.setTheme(t); } catch (e) { remountDiorama(); } }
+      else remountDiorama();
+    }
   }
 
   // ---------------------------------------------------------------- map
@@ -98,7 +101,7 @@
   // OpenStreetMap standard tiles in both themes; the evening theme darkens them with a CSS filter.
   var TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
   var TILE_ATTR = '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>';
-  var LABEL_ZOOM = 15;
+  var LABEL_ZOOM = 17;   // all labels permanent from this zoom; below it only the selected one
 
   function initMap() {
     if (!window.L) return;
@@ -138,17 +141,25 @@
     tiles = L.tileLayer(TILE_URL, { maxZoom: 19, attribution: TILE_ATTR }).addTo(map);
   }
 
-  var tipPermanent = null;
+  /** Short map label: text before the first comma, " / " or "(", max ~22 chars. */
+  function shortLabel(m) {
+    var t = String(m.location || m.name).split(/,| \/ | \(/)[0].trim();
+    return t.length > 22 ? t.slice(0, 21).trim() + '…' : t;
+  }
+  var tipPerm = {};
   function bindTip(m, permanent) {
     var mk = markers[m.id];
+    tipPerm[m.id] = permanent;
     mk.unbindTooltip();
-    mk.bindTooltip(esc(m.location), { direction: 'top', offset: [0, -12], permanent: permanent, className: 'mk-tip', opacity: 1 });
+    mk.bindTooltip(esc(shortLabel(m)), { direction: 'top', offset: [0, -12], permanent: permanent, className: 'mk-tip' + (permanent ? ' mk-tip--perm' : ''), opacity: 1 });
   }
   function updateTipMode() {
-    var perm = map.getZoom() >= LABEL_ZOOM;
-    if (perm === tipPermanent) return;
-    tipPermanent = perm;
-    MARKETS.forEach(function (m) { bindTip(m, perm); });
+    if (!map) return;
+    var all = map.getZoom() >= LABEL_ZOOM;
+    MARKETS.forEach(function (m) {
+      var want = all || state.selected === m.id;
+      if (tipPerm[m.id] !== want) bindTip(m, want);
+    });
   }
 
   function updateMarkers(visibleIds) {
@@ -164,6 +175,7 @@
       el.setAttribute('aria-label', m.name + ' — ' + s.label);
       markers[m.id].setZIndexOffset(state.selected === m.id ? 1000 : (visibleIds[m.id] ? 100 : 0));
     });
+    updateTipMode();
   }
 
   function flyToMarket(m) {
@@ -186,7 +198,7 @@
     var mk = markers[id];
     if (mk && mk.getElement()) {
       mk.getElement().classList.toggle('is-hot', on);
-      if (!tipPermanent) { if (on) mk.openTooltip(); else mk.closeTooltip(); }
+      if (!tipPerm[id]) { if (on) mk.openTooltip(); else mk.closeTooltip(); }
     }
   }
 
@@ -274,10 +286,8 @@
   var cardEls = {};
 
   function keywordsFor(m) {
-    var out = [], seen = {};
-    [m.vibe && m.vibe[0], m.specials && m.specials[0], m.vibe && m.vibe[1], m.specials && m.specials[1], m.sells && m.sells[0]]
-      .forEach(function (k) { if (k && !seen[k.toLowerCase()] && out.length < 4) { seen[k.toLowerCase()] = 1; out.push(k); } });
-    return out;
+    // Cards show only short words: up to 3 from `vibe` (specials are long phrases — detail panel only).
+    return (m.vibe || []).slice(0, 3);
   }
 
   function thumbHTML(m) {
@@ -294,9 +304,9 @@
         '<span class="card-media">' + thumbHTML(m) + '</span>' +
         '<span class="card-body">' +
           '<span class="card-title">' + esc(m.name) + '</span>' +
-          '<span class="card-loc">' + icon('i-pin') + esc(m.location) + (m.district ? ' · ' + districtLabel(m.district) : '') + '<span class="card-dist"></span></span>' +
+          '<span class="card-loc" title="' + esc(m.location) + '">' + icon('i-pin') + '<span class="card-loc-t">' + esc(shortLabel(m)) + (m.district ? ' · ' + districtLabel(m.district) : '') + '<span class="card-dist"></span></span></span>' +
           '<span class="card-status"></span>' +
-          '<span class="card-kw">' + keywordsFor(m).map(function (k) { return '<span class="kw">' + esc(k) + '</span>'; }).join('') + '</span>' +
+          '<span class="card-kw">' + keywordsFor(m).map(function (k) { return '<span class="kw" title="' + esc(k) + '">' + esc(k) + '</span>'; }).join('') + '</span>' +
           '<span class="card-crowd"></span>' +
         '</span>' +
       '</a>';
