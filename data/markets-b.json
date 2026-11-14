@@ -1,0 +1,693 @@
+[
+  {
+    "id": "spittelberg",
+    "name": "Weihnachtsmarkt am Spittelberg",
+    "nameEn": "Spittelberg Christmas Market",
+    "location": "Spittelberg lanes",
+    "district": 7,
+    "address": "Spittelberggasse / Gutenberggasse, 1070 Wien",
+    "lat": 48.2031,
+    "lng": 16.3553,
+    "season": {
+      "start": "2026-11-13",
+      "end": "2026-12-23"
+    },
+    "hours": [
+      {
+        "dates": [
+          "2026-12-08"
+        ],
+        "open": "11:00",
+        "close": "21:30",
+        "label": "Public holiday"
+      },
+      {
+        "days": [
+          0,
+          6
+        ],
+        "open": "11:00",
+        "close": "21:30"
+      },
+      {
+        "days": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "open": "14:00",
+        "close": "21:30"
+      }
+    ],
+    "hoursNote": "Weekdays from 14:00; weekends and 8 Dec from 11:00. Closed from 24 Dec.",
+    "hoursConfidence": "confirmed",
+    "website": "https://www.spittelberg.at",
+    "transit": [
+      "U2/U3 Volkstheater (5 min walk)",
+      "Tram 49 – Stiftgasse"
+    ],
+    "size": "large",
+    "stalls": 122,
+    "popularity": 4,
+    "priceLevel": 2,
+    "summary": "Vienna's biggest market by stall count (122), but you'd never guess it: the huts are threaded through the narrow cobbled lanes of a Biedermeier quarter, so it feels like a village of makers rather than a fairground.",
+    "bestFor": "Unique gifts, design hunters, a cosy evening stroll",
+    "vibe": [
+      "Biedermeier lanes",
+      "creative",
+      "cosy crush",
+      "local favourite"
+    ],
+    "sells": [
+      "hand-blown glass",
+      "ceramics & jewellery",
+      "wicker baskets",
+      "Punsch in collectible mugs",
+      "Maroni",
+      "Kiachl"
+    ],
+    "specials": [
+      "stalls squeezed into the narrow 18th-century Spittelberggasse and Gutenberggasse",
+      "heavy on independent designers and artisans rather than mass-made trinkets",
+      "neighbourhood beisls and bars along the lanes stay open between the huts",
+      "Punsch served in the market's own Spittelberg mug"
+    ],
+    "tags": [
+      "crafts",
+      "art",
+      "romantic",
+      "foodie",
+      "alternative"
+    ],
+    "photos": [
+      {
+        "src": "img/markets/spittelberg/1.jpg",
+        "thumb": "img/markets/spittelberg/1-thumb.jpg",
+        "w": 1280,
+        "h": 721,
+        "caption": "Wooden stalls lining a snowy cobbled Spittelberg lane",
+        "author": "Geolina163",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spittelberg_Weihnachtsmarkt_2023_01.jpg"
+      },
+      {
+        "src": "img/markets/spittelberg/2.jpg",
+        "thumb": "img/markets/spittelberg/2-thumb.jpg",
+        "w": 1280,
+        "h": 964,
+        "caption": "Fairy-light reindeer sleigh on a stall roof at dusk (2006)",
+        "author": "János Korom Dr. from Wien, Austria",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:B%C3%A9cs_102_(4282262814).jpg"
+      },
+      {
+        "src": "img/markets/spittelberg/3.jpg",
+        "thumb": "img/markets/spittelberg/3-thumb.jpg",
+        "w": 1280,
+        "h": 844,
+        "caption": "Stall of colourful hand-blown glass art",
+        "author": "Geolina163",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spittelberg_Weihnachtsmarkt_2023_02.jpg"
+      },
+      {
+        "src": "img/markets/spittelberg/4.jpg",
+        "thumb": "img/markets/spittelberg/4-thumb.jpg",
+        "w": 1280,
+        "h": 721,
+        "caption": "Wicker baskets spread out on the cobbles by a fair-trade stall",
+        "author": "Geolina163",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spittelberg_Weihnachtsmarkt_2023_04.jpg"
+      },
+      {
+        "src": "img/markets/spittelberg/5.jpg",
+        "thumb": "img/markets/spittelberg/5-thumb.jpg",
+        "w": 1056,
+        "h": 1280,
+        "caption": "Punch in the market's Beethoven-quote Spittelberg mug",
+        "author": "Geolina163",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spittelberg_Weihnachtsmarkt_2023_06.jpg"
+      }
+    ],
+    "diorama": {
+      "landmark": "spittelberg",
+      "layout": "alley",
+      "stalls": 16,
+      "features": [
+        "light-trees",
+        "punch-pavilion"
+      ]
+    },
+    "sources": [
+      "https://wien.orf.at/stories/3377405/",
+      "https://www.regionalsuche.at/advent-wien-erleben-adventmaerkte/",
+      "https://www.vienna.at/these-vienna-christmas-markets-open-this-week/10878719",
+      "https://www.visitingvienna.com/sights/christmasmarkets/spittelberg/",
+      "https://www.vienna.at/vienna-christmas-markets-2026-an-overview-of-all-15-markets/10602305"
+    ],
+    "verified": "2026-11-14"
+  },
+  {
+    "id": "belvedere",
+    "name": "K&K Weihnachtsmarkt Schloss Belvedere",
+    "nameEn": "Imperial Christmas Market at Belvedere Palace",
+    "location": "Upper Belvedere, far end of the pond",
+    "district": 3,
+    "address": "Prinz-Eugen-Straße 27, 1030 Wien",
+    "lat": 48.1899,
+    "lng": 16.3811,
+    "season": {
+      "start": "2026-11-20",
+      "end": "2026-12-31"
+    },
+    "hours": [
+      {
+        "dates": [
+          "2026-12-24"
+        ],
+        "open": "11:00",
+        "close": "17:00",
+        "label": "Christmas Eve"
+      },
+      {
+        "dates": [
+          "2026-12-31"
+        ],
+        "open": "11:00",
+        "close": "17:00",
+        "label": "New Year's Eve"
+      },
+      {
+        "from": "2026-12-25",
+        "to": "2026-12-27",
+        "open": "11:00",
+        "close": "17:00",
+        "label": "Christmas holidays (unconfirmed)"
+      },
+      {
+        "dates": [
+          "2026-12-08"
+        ],
+        "open": "10:00",
+        "close": "21:00",
+        "label": "Public holiday"
+      },
+      {
+        "days": [
+          0,
+          6
+        ],
+        "open": "10:00",
+        "close": "21:00"
+      },
+      {
+        "days": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "open": "11:00",
+        "close": "21:00"
+      }
+    ],
+    "hoursNote": "New organiser, name and smaller site for 2026. ORF lists 21:00 closing (another listing says 22:00); 25–27 Dec may run until 21:00 – we show the shorter hours.",
+    "hoursConfidence": "likely",
+    "website": "https://www.wien.info/en/now-on/events/kk-christmas-market-1135290",
+    "transit": [
+      "Tram D – Schloss Belvedere",
+      "Tram O, 18 / S-Bahn – Quartier Belvedere",
+      "U1 Hauptbahnhof (10 min walk)"
+    ],
+    "size": "small",
+    "stalls": 38,
+    "popularity": 3,
+    "priceLevel": 3,
+    "summary": "The only one of the 15 official markets open through New Year's Eve: a compact, \"imperial\"-themed village by the pond of the Upper Belvedere, where the floodlit baroque palace doubles itself in the water.",
+    "bestFor": "Photographers, couples, a classy pre-New-Year Punsch",
+    "vibe": [
+      "baroque",
+      "elegant",
+      "photogenic",
+      "compact"
+    ],
+    "sells": [
+      "Punsch & Glühwein",
+      "glass baubles",
+      "natural cosmetics",
+      "Austrian crafts",
+      "Maroni"
+    ],
+    "specials": [
+      "palace and lights reflected in the long pond – best right after dusk",
+      "open until 31 Dec, unlike every other official Vienna market",
+      "new 2026 site at the far (Gürtel) end of the pond, so the palace is the backdrop rather than the wall behind you",
+      "a quick walk to Klimt's \"The Kiss\" in the Upper Belvedere"
+    ],
+    "tags": [
+      "romantic",
+      "views",
+      "imperial",
+      "crafts",
+      "after-christmas",
+      "new-year"
+    ],
+    "photos": [
+      {
+        "src": "img/markets/belvedere/1.jpg",
+        "thumb": "img/markets/belvedere/1-thumb.jpg",
+        "w": 1280,
+        "h": 719,
+        "caption": "Upper Belvedere and its market lights mirrored in the pond",
+        "author": "Anna Saini",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Schlo%C3%9F_Belvedere_-_Advent_6.jpg"
+      },
+      {
+        "src": "img/markets/belvedere/2.jpg",
+        "thumb": "img/markets/belvedere/2-thumb.jpg",
+        "w": 1280,
+        "h": 719,
+        "caption": "Evening crowd at stalls beside the Upper Belvedere (2018)",
+        "author": "Anna Saini",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Schlo%C3%9F_Belvedere_-_Advent_5.jpg"
+      },
+      {
+        "src": "img/markets/belvedere/3.jpg",
+        "thumb": "img/markets/belvedere/3-thumb.jpg",
+        "w": 1280,
+        "h": 871,
+        "caption": "Snow-dusted craft stalls in front of the palace (2023)",
+        "author": "Geolina163",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Oberes_Belvedere_Weihnachtsmarkt_2023_2.jpg"
+      },
+      {
+        "src": "img/markets/belvedere/4.jpg",
+        "thumb": "img/markets/belvedere/4-thumb.jpg",
+        "w": 1280,
+        "h": 960,
+        "caption": "Illuminated star arch in the Belvedere garden",
+        "author": "Anna Saini",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Schlo%C3%9F_Belvedere_-_Advent_1.jpg"
+      },
+      {
+        "src": "img/markets/belvedere/5.jpg",
+        "thumb": "img/markets/belvedere/5-thumb.jpg",
+        "w": 1280,
+        "h": 735,
+        "caption": "Light-strung wooden tree before the floodlit palace",
+        "author": "Anna Saini",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Schlo%C3%9F_Belvedere_-_Advent_14.jpg"
+      }
+    ],
+    "diorama": {
+      "landmark": "belvedere",
+      "layout": "forecourt",
+      "stalls": 9,
+      "features": [
+        "pond",
+        "arch",
+        "light-trees"
+      ]
+    },
+    "sources": [
+      "https://wien.orf.at/stories/3377405/",
+      "https://www.kosmo.at/wiener-christkindlmaerkte-2026-diese-drei-neuerungen-gibt-es/",
+      "https://adventmarkt-orte.at/wien/belvedere/",
+      "https://www.wien.info/en/now-on/events/kk-christmas-market-1135290",
+      "https://www.news.at/ausflugsziele/heuer-15-weihnachtsmarkte-in-wien"
+    ],
+    "verified": "2026-11-14"
+  },
+  {
+    "id": "schoenbrunn",
+    "name": "Weihnachtsmarkt Schloss Schönbrunn",
+    "nameEn": "Christmas Market at Schönbrunn Palace",
+    "location": "Schönbrunn Palace, Ehrenhof",
+    "district": 13,
+    "address": "Schönbrunner Schloßstraße 47, 1130 Wien",
+    "lat": 48.1862,
+    "lng": 16.3126,
+    "season": {
+      "start": "2026-11-06",
+      "end": "2027-01-06"
+    },
+    "hours": [
+      {
+        "dates": [
+          "2026-12-24"
+        ],
+        "open": "10:00",
+        "close": "16:00",
+        "label": "Christmas Eve"
+      },
+      {
+        "from": "2026-12-25",
+        "to": "2027-01-06",
+        "open": "10:00",
+        "close": "19:00",
+        "label": "Christmas & New Year market"
+      },
+      {
+        "days": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "open": "10:00",
+        "close": "21:00"
+      }
+    ],
+    "hoursNote": "After Christmas it continues as a New Year market until 6 Jan (10–19). Palace and \"Imperial Lights\" tickets are separate.",
+    "hoursConfidence": "confirmed",
+    "website": "https://www.weihnachtsmarkt-schoenbrunn.at",
+    "transit": [
+      "U4 Schönbrunn (5 min walk)",
+      "Tram 10, 60 – Schloss Schönbrunn",
+      "Bus 10A – Schloss Schönbrunn"
+    ],
+    "size": "large",
+    "stalls": 99,
+    "popularity": 4,
+    "priceLevel": 3,
+    "summary": "Vienna's second-largest market spreads across the palace's vast Ehrenhof, with a huge tree against the yellow imperial façade; it leans on traditional handicrafts and is the first to open and among the last to close.",
+    "bestFor": "Imperial atmosphere, quality crafts, families, after-Christmas visits",
+    "vibe": [
+      "imperial",
+      "grand",
+      "traditional",
+      "festive"
+    ],
+    "sells": [
+      "Kaiserschmarrn",
+      "Punsch & Glühwein",
+      "glass ornaments",
+      "wood carvings & toys",
+      "Maroni",
+      "Bauernkrapfen"
+    ],
+    "specials": [
+      "giant Christmas tree in front of the palace façade",
+      "traditional handicraft stalls rather than mass-produced goods",
+      "small ice rink, Eisstock curling and a vintage carousel for kids",
+      "turns into a New Year market from 25 Dec to 6 Jan",
+      "brass and choir concerts on the courtyard stage"
+    ],
+    "tags": [
+      "imperial",
+      "crafts",
+      "kids",
+      "ice-skating",
+      "live-music",
+      "after-christmas",
+      "new-year"
+    ],
+    "photos": [
+      {
+        "src": "img/markets/schoenbrunn/1.jpg",
+        "thumb": "img/markets/schoenbrunn/1-thumb.jpg",
+        "w": 1280,
+        "h": 853,
+        "caption": "Market and giant tree in the Ehrenhof at blue hour",
+        "author": "traveljunction",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Christmas_Market_at_Sch%C3%B6nbrunn_Palace_in_Vienna,_Austria_(16406086720).jpg"
+      },
+      {
+        "src": "img/markets/schoenbrunn/2.jpg",
+        "thumb": "img/markets/schoenbrunn/2-thumb.jpg",
+        "w": 1280,
+        "h": 720,
+        "caption": "Kaiser-Pfandl stall and tree in front of the palace",
+        "author": "Anna Saini",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Schloss_Sch%C3%B6nbrunn_-_Adventmarkt_1.jpg"
+      },
+      {
+        "src": "img/markets/schoenbrunn/3.jpg",
+        "thumb": "img/markets/schoenbrunn/3-thumb.jpg",
+        "w": 1280,
+        "h": 853,
+        "caption": "Glass baubles and ornaments glowing on a craft stall",
+        "author": "traveljunction",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Christmas_decorations_on_a_stall_at_the_Christmas_Market_at_the_Sch%C3%B6nbrunn_Palace_in_Vienna,_Austria._(16407346339).jpg"
+      },
+      {
+        "src": "img/markets/schoenbrunn/4.jpg",
+        "thumb": "img/markets/schoenbrunn/4-thumb.jpg",
+        "w": 1280,
+        "h": 960,
+        "caption": "Snowfall over the busy courtyard market (2023)",
+        "author": "Funke",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Weihnachtsmarkt_Sch%C3%B6nbrunn_2023_01.jpg"
+      },
+      {
+        "src": "img/markets/schoenbrunn/5.jpg",
+        "thumb": "img/markets/schoenbrunn/5-thumb.jpg",
+        "w": 1280,
+        "h": 853,
+        "caption": "Snowy night: the tree, stalls and the yellow palace",
+        "author": "MTSWien",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Markt_und_Schlo%C3%9F_Sch%C3%B6nbrunn_Foto_G._Fally.JPG"
+      }
+    ],
+    "diorama": {
+      "landmark": "schoenbrunn",
+      "layout": "forecourt",
+      "stalls": 16,
+      "features": [
+        "big-tree",
+        "ice-rink",
+        "carousel",
+        "stage",
+        "light-trees"
+      ]
+    },
+    "sources": [
+      "https://wien.orf.at/stories/3377405/",
+      "https://wien.orf.at/radio/stories/3379139/",
+      "https://www.wien.info/de/aktuell/veranstaltungen/weihnachtsmarkt-schloss-schoenbrunn-1133662",
+      "https://www.news.at/ausflugsziele/heuer-15-weihnachtsmarkte-in-wien",
+      "https://www.news.at/ausflugsziele/weihnachtsmaerkte-wien-2026-schoenbrunn-rathausplatz-eroeffnung"
+    ],
+    "verified": "2026-11-14"
+  },
+  {
+    "id": "prater",
+    "name": "Wintermarkt am Riesenradplatz",
+    "nameEn": "Winter Market at the Giant Ferris Wheel (Prater)",
+    "location": "Riesenradplatz, Prater",
+    "district": 2,
+    "address": "Riesenradplatz, 1020 Wien",
+    "lat": 48.2166,
+    "lng": 16.3959,
+    "season": {
+      "start": "2026-11-20",
+      "end": "2027-01-06"
+    },
+    "hours": [
+      {
+        "dates": [
+          "2026-12-24"
+        ],
+        "open": "11:00",
+        "close": "17:00",
+        "label": "Christmas Eve"
+      },
+      {
+        "dates": [
+          "2026-12-31"
+        ],
+        "open": "12:00",
+        "close": "02:00",
+        "label": "New Year's Eve"
+      },
+      {
+        "dates": [
+          "2027-01-01"
+        ],
+        "open": "12:00",
+        "close": "22:00",
+        "label": "New Year's Day"
+      },
+      {
+        "dates": [
+          "2026-12-08",
+          "2026-12-25",
+          "2026-12-26",
+          "2027-01-06"
+        ],
+        "open": "11:00",
+        "close": "22:00",
+        "label": "Public holiday"
+      },
+      {
+        "days": [
+          0,
+          6
+        ],
+        "open": "11:00",
+        "close": "22:00"
+      },
+      {
+        "days": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "open": "12:00",
+        "close": "22:00"
+      }
+    ],
+    "hoursNote": "Concerts Wed–Sun. On 31 Dec open until 02:00. 25/26 Dec assumed to follow the holiday hours; one listing has 1 Jan until 02:00 too.",
+    "hoursConfidence": "likely",
+    "website": "https://www.wintermarkt.at",
+    "transit": [
+      "U1/U2 Praterstern (5 min walk)",
+      "Tram O, 5 – Praterstern"
+    ],
+    "size": "medium",
+    "stalls": null,
+    "popularity": 3,
+    "priceLevel": 2,
+    "summary": "Less Christmas-card, more winter fair: punch huts and fairground rides around the floodlit 1897 Riesenrad, with free concerts on a stage several nights a week and a New Year's Eve party that runs past midnight.",
+    "bestFor": "Groups of friends, teens, New Year's Eve, live music",
+    "vibe": [
+      "lively",
+      "fairground",
+      "neon & fairy lights",
+      "party"
+    ],
+    "sells": [
+      "Punsch & Glühwein",
+      "Langos",
+      "Bratwurst & Käsekrainer",
+      "roasted almonds",
+      "Maroni"
+    ],
+    "specials": [
+      "the Riesenrad as a backdrop – ride it for the view over the lights",
+      "free live concerts Wednesday to Sunday (\"Der Prater rockt\")",
+      "fairground carousels and Prater rides right next to the stalls",
+      "New Year's Eve party, open until 02:00"
+    ],
+    "tags": [
+      "rides",
+      "live-music",
+      "views",
+      "after-christmas",
+      "new-year",
+      "kids"
+    ],
+    "photos": [
+      {
+        "src": "img/markets/prater/1.jpg",
+        "thumb": "img/markets/prater/1-thumb.jpg",
+        "w": 1280,
+        "h": 1024,
+        "caption": "Live music on the Wintermarkt stage beneath the Riesenrad",
+        "author": "Manfred Werner - Tsui",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Valentin_and_Celina_Ann_-_Wintermarkt_Riesenradplatz_2016_21.jpg"
+      },
+      {
+        "src": "img/markets/prater/2.jpg",
+        "thumb": "img/markets/prater/2-thumb.jpg",
+        "w": 1280,
+        "h": 853,
+        "caption": "Glowing carousel and punch stands on the Riesenradplatz",
+        "author": "Manfred Werner - Tsui",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wintermarkt_am_Riesenradplatz_im_Prater_2016.jpg"
+      },
+      {
+        "src": "img/markets/prater/3.jpg",
+        "thumb": "img/markets/prater/3-thumb.jpg",
+        "w": 1280,
+        "h": 853,
+        "caption": "Band playing the Wintermarkt stage",
+        "author": "Manfred Werner - Tsui",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Valentin_and_Celina_Ann_-_Wintermarkt_Riesenradplatz_2016_02.jpg"
+      },
+      {
+        "src": "img/markets/prater/4.jpg",
+        "thumb": "img/markets/prater/4-thumb.jpg",
+        "w": 1280,
+        "h": 850,
+        "caption": "The Riesenrad lit up on a late-November evening",
+        "author": "Letizia Barbi",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Praters_Giant_%27Ferris_Wheel_(8218343144).jpg"
+      },
+      {
+        "src": "img/markets/prater/5.jpg",
+        "thumb": "img/markets/prater/5-thumb.jpg",
+        "w": 853,
+        "h": 1280,
+        "caption": "Riesenrad entrance pavilion during the holidays (Dec 2014)",
+        "author": "traveljunction",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Big_Wheel_in_the_Prater_in_Vienna,_Austria._(16396601399).jpg"
+      }
+    ],
+    "diorama": {
+      "landmark": "riesenrad",
+      "layout": "square",
+      "stalls": 12,
+      "features": [
+        "ferris-wheel",
+        "carousel",
+        "stage",
+        "punch-pavilion",
+        "light-trees"
+      ]
+    },
+    "sources": [
+      "https://www.wintermarkt.at/en/",
+      "https://www.wien.info/en/now-on/events/winter-market-on-riesenradplatz-1135292",
+      "https://www.austrianmoments4me.at/adventmaerkte/wintermarkt-am-riesenradplatz-prater-1",
+      "https://www.vienna.at/wiener-prater-wintermarkt-startet-schon-am-20-november/10410224",
+      "https://wien.orf.at/stories/3377405/"
+    ],
+    "verified": "2026-11-14"
+  }
+]

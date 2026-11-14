@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diorama showcase</title>
+<style>
+  :root { --bg: #141a2e; --panel: #1d2540; --text: #eee9df; --muted: #a9aec2; --line: rgba(255,255,255,.12); }
+  body.light { --bg: #eef0f4; --panel: #fbfaf7; --text: #232836; --muted: #5d6476; --line: rgba(0,0,0,.12); }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.45 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+  header { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+  h1 { font-size: 17px; margin: 0 12px 0 0; font-weight: 650; }
+  select, button { font: inherit; color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; max-width: 100%; }
+  button { cursor: pointer; }
+  main { padding: 16px; }
+  #stage { width: min(960px, 100%); aspect-ratio: 16 / 10; background: var(--panel); border-radius: 14px; border: 1px solid var(--line); }
+  #stage.s520 { width: 520px; height: 325px; aspect-ratio: auto; }
+  #stage.s360 { width: 360px; height: 260px; aspect-ratio: auto; }
+  #info { color: var(--muted); font-size: 13px; margin-top: 10px; }
+  body.still header, body.still #info { display: none; }
+  body.still main { padding: 0; }
+  body.still #stage { border: 0; border-radius: 0; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Diorama showcase</h1>
+  <select id="pick" aria-label="Model"></select>
+  <button id="theme" type="button">Light theme</button>
+  <select id="size" aria-label="Size">
+    <option value="">Large</option>
+    <option value="s520">520 × 325</option>
+    <option value="s360">360 × 260</option>
+  </select>
+</header>
+<main>
+  <div id="stage"></div>
+  <div id="info"></div>
+</main>
+<script src="vendor/three.min.js"></script>
+<script src="data/markets.js"></script>
+<script src="js/diorama.js"></script>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var stage = document.getElementById('stage'), pick = document.getElementById('pick'), info = document.getElementById('info');
+  var themeBtn = document.getElementById('theme'), sizeSel = document.getElementById('size');
+  var theme = q.get('theme') === 'light' ? 'light' : 'dark';
+  var still = q.get('still') === '1';
+  if (still) document.body.classList.add('still');
+  if (q.get('size')) { stage.className = q.get('size'); sizeSel.value = q.get('size'); }
+  var handle = null;
+  var options = [];
+
+  if (!window.Diorama || !Diorama.isSupported()) { info.textContent = 'WebGL is not available in this browser.'; return; }
+
+  function add(group, label, market) { options.push({ group: group, label: label, market: market }); }
+  Diorama.landmarks.forEach(function (k) {
+    var p = Diorama.presets[k];
+    add('Landmarks (preset features)', k, { id: 'demo-' + k, name: k, location: 'demo', diorama: { landmark: k, layout: p.layout, stalls: p.stalls, features: p.features } });
+  });
+  var combos = [
+    ['all features A', ['ice-rink', 'big-tree', 'carousel', 'arch', 'light-trees', 'punch-pavilion']],
+    ['all features B', ['ferris-wheel', 'pond', 'curling', 'stage', 'nativity', 'fire-pits']],
+    ['all features C', ['animals', 'train', 'light-trees', 'punch-pavilion', 'big-tree']],
+    ['no features', []]
+  ];
+  ['square', 'forecourt', 'alley', 'courtyard', 'park'].forEach(function (layout) {
+    combos.forEach(function (cmb) {
+      add('Feature combos (generic)', layout + ' · ' + cmb[0], { id: 'combo-' + layout + cmb[0], name: 'Generic market', location: 'demo', diorama: { landmark: 'generic', layout: layout, stalls: 12, features: cmb[1] } });
+    });
+  });
+  add('Edge cases', 'missing diorama', { id: 'none', name: 'No config', location: 'nowhere' });
+  add('Edge cases', 'unknown landmark + features', { id: 'weird', name: 'Weird', location: 'x', diorama: { landmark: 'eiffel', layout: 'zigzag', stalls: 99, features: ['dragon', 'big-tree'] } });
+  (window.MARKETS || []).forEach(function (m) { add('Markets', m.name + ' (' + m.id + ')', m); });
+
+  var groups = {};
+  options.forEach(function (o, i) {
+    var g = groups[o.group];
+    if (!g) { g = groups[o.group] = document.createElement('optgroup'); g.label = o.group; pick.appendChild(g); }
+    var op = document.createElement('option'); op.value = i; op.textContent = o.label; g.appendChild(op);
+  });
+
+  function show(market) {
+    if (handle) handle.dispose();
+    handle = Diorama.mount(stage, market, { theme: theme, autoRotate: true, still: still });
+    setTimeout(function () { if (handle && handle.stats) { var s = handle.stats(); info.textContent = 'Triangles: ' + s.triangles + ' · draw calls: ' + s.calls + ' · ' + JSON.stringify(s.config); } }, 300);
+  }
+  function applyTheme() {
+    document.body.classList.toggle('light', theme === 'light');
+    themeBtn.textContent = theme === 'light' ? 'Dark theme' : 'Light theme';
+  }
+  applyTheme();
+
+  // URL params: ?landmark=&layout=&features=a,b&stalls=&market=&theme=&still=1&size=s520
+  var initial = null;
+  if (q.get('market')) initial = (window.MARKETS || []).filter(function (m) { return m.id === q.get('market'); })[0];
+  if (!initial && q.get('landmark')) {
+    var lk = q.get('landmark'), pre = Diorama.presets[lk] || Diorama.presets.generic;
+    initial = { id: 'url-' + lk, name: lk, location: 'demo', diorama: {
+      landmark: lk, layout: q.get('layout') || pre.layout, stalls: q.get('stalls') ? +q.get('stalls') : pre.stalls,
+      features: q.has('features') ? q.get('features').split(',').filter(Boolean) : pre.features } };
+  }
+  if (initial) { show(initial); pick.selectedIndex = -1; } else { show(options[0].market); }
+
+  pick.addEventListener('change', function () { show(options[+pick.value].market); });
+  themeBtn.addEventListener('click', function () { theme = theme === 'light' ? 'dark' : 'light'; applyTheme(); if (handle) handle.setTheme(theme); });
+  sizeSel.addEventListener('change', function () { stage.className = sizeSel.value; });
+  window.__diorama = function () { return handle; };
+})();
+</script>
+</body>
+</html>
