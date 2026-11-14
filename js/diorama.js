@@ -470,7 +470,7 @@
   function chevronTex() {
     var t = canvasTex(128, function (g, w, h) {
       var cols = ['#d6a632', '#2f5f47', '#24282b', '#e6dfcc', '#d6a632', '#2f5f47', '#24282b', '#c99a2c'];
-      var band = h / cols.length, amp = band * 0.9, step = w / 4;
+      var band = h / cols.length, amp = band * 1.25, step = w / 3;
       g.fillStyle = '#2b2f31'; g.fillRect(0, 0, w, h);
       for (var i = -1; i <= cols.length; i++) {
         g.fillStyle = cols[(i + cols.length) % cols.length];
@@ -574,7 +574,7 @@
     b.box(x, y + 1.82, z, 0.16, 0.2, 0.16, P.warm, { layer: 'glow' });
     b.cone(x, y + 2.02, z, 0.14, 0.14, P.iron, { seg: 4, ry: PI / 4 });
     b.halo(x, y + 1.92, z, P.warm, 0.9);
-    b.pool(x, z, 1.25, P.warm, 0.7);
+    b.pool(x, z, 1.15, P.warm, 0.5);
     return [x, y + 1.95, z];
   }
 
@@ -602,6 +602,9 @@
       b.box(0, 0.86, D / 2 + 0.03, W * 1.02, 0.08, 0.06, st.trim);
     }
     b.gable(0, H, 0, W + 0.2, 0.44, D + 0.34, st.roof, { snow: true });
+    // back: small lit window + crates so rear views are not blank
+    b.quad(0.25, 0.48, -D / 2 - 0.012, 0.3, 0.22, 0xffc978, { layer: 'glow', ry: PI });
+    b.box(-0.4, 0, -D / 2 - 0.14, 0.26, 0.2, 0.22, P.woodLight, { ry: 0.2 });
     if (st.white) b.box(0, H + 0.38, 0, 0.06, 0.16, 0.06, P.gold);
     b.pool(0, 0.95, 1.2, P.warm, 0.85);
     b.pop();
@@ -740,6 +743,7 @@
     b.arch(0, 5.7, tz + 0.912, 0.36, 0.9, winCol(c.rng), { pointed: true });
     b.arch(0, 8.65, tz + 0.712, 0.3, 0.7, 0xffcf8a, { pointed: true });
     c.block(-8.0, 8.0, -9.4, z0 + 1.65);
+    c.edgeBare = true;
     c.block(-2.2, 2.2, -9.4, z0 + 2.95);
     c.block(-3.9, 3.9, -9.4, z0 + 1.95);
   };
@@ -763,7 +767,7 @@
     var rg = new THREE.BufferGeometry();
     var pos = [], uv = [];
     function tri(a, bb, cc, ua, ub, uc) { pos.push(a[0], a[1], a[2], bb[0], bb[1], bb[2], cc[0], cc[1], cc[2]); uv.push(ua[0], ua[1], ub[0], ub[1], uc[0], uc[1]); }
-    var x0 = -5.5, x1 = x0 + L, su = L / 2.6, sv = Math.hypot(D / 2, Hh) / 1.7;
+    var x0 = -5.5, x1 = x0 + L, su = L / 3.4, sv = Math.hypot(D / 2, Hh) / 2.6;
     // south slope (+z)
     tri([x0, 0, D / 2], [x1, 0, D / 2], [x1, Hh, 0], [0, 0], [su, 0], [su, sv]);
     tri([x0, 0, D / 2], [x1, Hh, 0], [x0, Hh, 0], [0, 0], [su, sv], [0, sv]);
@@ -780,7 +784,7 @@
     rm.position.set(0, wallH, zc);
     b.addMesh(rm);
     // east apse roof (half cone) in slate
-    b.cone(x1, wallH, zc, D / 2, Hh * 0.75, 0x3a3f45, { seg: 8, ry: PI / 8 });
+    b.cone(x1, wallH, zc, D / 2, Hh * 0.75, 0x3c5446, { seg: 8, ry: PI / 8 });
     // west front: Riesentor + the two Heidentürme
     var wx = -5.6;
     b.box(wx - 0.2, 0, zc, 0.7, 3.4, W + 0.2, S2);
@@ -924,7 +928,7 @@
     block(c, -3.0, -8.6, 4.2, 3.0, 1.8, 0xe6d5b8, { roof: P.tile });
     c.block(-5.2, -0.8, -9.6, -7.6);
     // Austria fountain
-    var fx = -1.6, fz = -0.4;
+    var fx = -3.1, fz = -0.4;
     b.cyl(fx, 0, fz, 1.15, 0.4, 0xc9c0ae, { seg: 8, ry: PI / 8 });
     b.cyl(fx, 0, fz, 1.0, 0.42, P.water, { seg: 8, ry: PI / 8, layer: 'water' });
     b.cyl(fx, 0, fz, 0.34, 1.5, 0xc9c0ae, { seg: 8 });
@@ -1015,8 +1019,8 @@
       // corner pavilions
       [-1, 1].forEach(function (e) {
         b.box(e * 5.4, 0, 0.15, 1.9, 3.5, 2.9, S2);
-        b.cyl(e * 5.4, 3.5, 0.15, 0.55, 0.35, S, { seg: 8 });
-        b.dome(e * 5.4, 3.85, 0.15, 0.58, 0.7, P.copper, { seg: 8, rings: 3 });
+        b.cyl(e * 5.4, 3.5, 0.15, 0.42, 0.3, S, { seg: 8 });
+        b.dome(e * 5.4, 3.8, 0.15, 0.45, 0.55, P.copper, { seg: 8, rings: 3 });
         windows(c, e * 5.4 - 0.4, e * 5.4 + 0.4, 2, [0.62, 1.95], 1.612, 0.28, 0.62, { shape: 'r' });
       });
       b.pop();
@@ -1050,7 +1054,8 @@
       c.blockC(p[0], p[1], 0.42);
     });
     c.noEdgeTrees = true;
-    c.az0 = 0.3;
+    c.az0 = 0.2; c.pol0 = 0.96;
+    if (c.cfg.layout === 'square') c.layoutOverride = 'forecourt';
   };
 
   LANDMARKS.mq = function (c) {
@@ -1317,6 +1322,15 @@
       b.sph(ox, 2.5, oz, 0.11, P.gold);
       c.blockC(ox, oz, 0.5);
     });
+    // the two fountains of the cour d'honneur
+    [-1, 1].forEach(function (s) {
+      var fx = s * 6.3, fz = -2.6;
+      b.cyl(fx, 0, fz, 1.0, 0.3, 0xd8d0be, { seg: 12 });
+      b.cyl(fx, 0, fz, 0.88, 0.32, P.water, { seg: 12, layer: 'water' });
+      b.cyl(fx, 0.3, fz, 0.3, 0.5, 0xd8d0be, { seg: 8 });
+      statue(b, fx - 0.15, 0.8, fz, 1.6, 0xe6dfcf); statue(b, fx + 0.18, 0.8, fz + 0.1, 1.3, 0xe6dfcf);
+      c.blockC(fx, fz, 1.1);
+    });
     // double external staircase in front of the centre
     var sz = -5.75;
     b.box(0, 0, sz, 2.6, 1.15, 1.0, Y);
@@ -1335,7 +1349,7 @@
   };
 
   LANDMARKS.riesenrad = function (c) {
-    var b = c.b, St = 0x50535c, hubY = 5.55, R = 4.3, wx = -2.2, wz = -6.4, wry = 0.28;
+    var b = c.b, St = 0x6d6560, hubY = 6.0, R = 4.8, wx = -1.6, wz = -6.6, wry = 0.28;
     // boarding station
     b.push(wx, 0, wz, wry);
     b.box(0, 0, 0, 5.0, 1.05, 2.4, 0x7a5b47);
@@ -1366,7 +1380,7 @@
       for (var i = 0; i < 30; i++) { var a = (i + 0.5) / 30 * TAU; sb.beam([Math.cos(a) * (R - 0.45), Math.sin(a) * (R - 0.45), 0.42], [Math.cos(a) * R, Math.sin(a) * R, -0.42], 0.025, St); }
       for (i = 0; i < 15; i++) { var a2 = i / 15 * TAU; sb.beam([Math.cos(a2) * R, Math.sin(a2) * R, -0.45], [Math.cos(a2) * R, Math.sin(a2) * R, 0.45], 0.04, St); }
       sb.cyl(0, -0.6, 0, 0.32, 1.2, 0x3a3d45, { seg: 8, rx: HALF });
-      for (i = 0; i < 45; i++) { var a3 = i / 45 * TAU; sb.bulb(Math.cos(a3) * R, Math.sin(a3) * R, 0.5, 0xfff0c8); }
+      for (i = 0; i < 45; i++) { var a3 = i / 45 * TAU; sb.bulb(Math.cos(a3) * R, Math.sin(a3) * R, 0.5, 0xfff0c8); if (i % 3 === 0) sb.halo(Math.cos(a3) * R, Math.sin(a3) * R, 0.5, 0xffd9a0, 0.3); }
     });
     var pivot = new THREE.Group();
     pivot.position.set(wx, hubY, wz);
@@ -1682,7 +1696,7 @@
         L.slots.push({ x: s * 1.88, z: z, ry: s * HALF, row: s > 0 ? 2 : 3, along: z, pri: 0.3 + Math.abs(z - 2) * 0.5 });
       }
     });
-    for (var x = -7.6; x <= 7.6; x += 1.75) if (Math.abs(Math.abs(x) - 3.65) > 1.2) L.slots.push({ x: x, z: 7.9, ry: PI, row: 6, along: x, pri: 4 + Math.abs(x) * 0.3 });
+    for (var x = -7.6; x <= 7.6; x += 1.75) if (Math.abs(Math.abs(x) - 3.65) > 1.2) L.slots.push({ x: x, z: 7.9, ry: 0, row: 6, along: x, pri: 4 + Math.abs(x) * 0.3 });
     L.spots = [
       { x: 0, z: 6.6, t: ['big', 'center', 'axis'], w: 2.2 },
       { x: -3.65, z: -5.0, t: ['side', 'axis'], w: 1.0 }, { x: 3.65, z: -5.0, t: ['side'], w: 1.0 },
@@ -1722,7 +1736,7 @@
 
   LAYOUTS.park = function (c) {
     var b = c.b;
-    var ctrl = [[0.6, 9.9], [-2.4, 6.6], [-1.6, 3.0], [2.4, 1.2], [3.4, -2.0], [0.2, -4.4], [-3.4, -4.9]].map(function (p) { return new THREE.Vector3(p[0], 0, p[1]); });
+    var ctrl = [[0.5, 9.1], [-2.4, 6.6], [-1.6, 3.0], [2.4, 1.2], [3.4, -2.0], [0.2, -4.4], [-3.4, -4.9]].map(function (p) { return new THREE.Vector3(p[0], 0, p[1]); });
     var curve = new THREE.CatmullRomCurve3(ctrl);
     var N = 60, pts = curve.getSpacedPoints(N), len = curve.getLength();
     var pos = [];
@@ -1783,6 +1797,8 @@
   var FEATURE_KEYS = Object.keys(FDEF);
 
   var FEATURES = {};
+  // orientation for things with a front: towards the plaza centre, biased towards the viewer side
+  function faceFront(c, s) { return Math.atan2(c.center[0] - s.x, c.center[1] + 6 - s.z); }
 
   FEATURES['ice-rink'] = function (c, s, hw, hd) {
     var b = c.b, rx = hw - 0.12, rz = hd - 0.12;
@@ -1947,7 +1963,7 @@
   };
 
   FEATURES.stage = function (c, s) {
-    var b = c.b, ctr = c.center, ry = Math.atan2(ctr[0] - s.x, ctr[1] - s.z);
+    var b = c.b, ry = faceFront(c, s);
     b.push(s.x, 0, s.z, ry);
     b.box(0, 0, 0, 2.4, 0.35, 1.6, P.woodDark);
     b.box(0, 0.35, -0.75, 2.4, 1.6, 0.1, 0x6e2a33);
@@ -1963,7 +1979,7 @@
   };
 
   FEATURES.nativity = function (c, s) {
-    var b = c.b, ctr = c.center, ry = Math.atan2(ctr[0] - s.x, ctr[1] - s.z), Wd = 0x7a5034;
+    var b = c.b, ry = faceFront(c, s), Wd = 0x7a5034;
     b.push(s.x, 0, s.z, ry);
     b.box(0, 0, 0, 1.7, 0.05, 1.3, P.straw);
     b.box(0, 0, -0.6, 1.6, 1.1, 0.1, Wd);
@@ -2244,7 +2260,7 @@
     var cfg = c.cfg, b = c.b, rng = c.rng;
     buildBoard(c);
     LANDMARKS[cfg.landmark](c);
-    var L = LAYOUTS[cfg.layout](c);
+    var L = LAYOUTS[c.layoutOverride || cfg.layout](c);
     c.spots = L.spots;
     c.walk = L.walk.length ? L.walk : [sq(-8, 8, -3, 9)];
 
@@ -2253,7 +2269,7 @@
 
     // stalls
     var styleKeys = c.stallStyle ? [c.stallStyle] : rng.chance(0.5) ? ['red', 'wood', 'red', 'light'] : ['red', 'green', 'wood', 'red'];
-    var slots = L.slots.slice().sort(function (a, b2) { return a.pri - b2.pri; });
+    var slots = L.slots.filter(c.slotFilter || function () { return true; }).sort(function (a, b2) { return a.pri - b2.pri; });
     var placed = [];
     for (var i = 0; i < slots.length && placed.length < cfg.stalls; i++) {
       var s = slots[i], e = stallBox(s);
@@ -2331,7 +2347,8 @@
         var sc = rng.range(0.75, 1.2);
         if (p[1] > 5 && Math.abs(p[0]) < 8) return;
         if (!rng.chance(0.7) || !c.fits(p[0], p[1], 0.5 * sc, 'deco')) return;
-        conifer(c, p[0], p[1], sc, { lights: rng.chance(0.12) });
+        if (c.edgeBare && p[1] > -7) bareTree(c, p[0], p[1], sc * 1.1, { lights: true, hearts: rng.chance(0.5) });
+        else conifer(c, p[0], p[1], sc, { lights: rng.chance(0.12) });
         c.blockC(p[0], p[1], 0.5 * sc);
         nE++;
       });
@@ -2381,8 +2398,8 @@
       wire: 0x0e0d12
     },
     light: {
-      hemiSky: 0xf4f7ff, hemiGround: 0xa9b1c2, hemi: 2.6,
-      moon: 0xffffff, moonI: 1.6, moonPos: [-8, 16, 10],
+      hemiSky: 0xf4f7ff, hemiGround: 0x9aa3b6, hemi: 2.25,
+      moon: 0xfffaf0, moonI: 1.9, moonPos: [-9, 15, 7],
       fill: 0xfff1e0, fillI: 0.55, fillPos: [4, 5, 14],
       point: 0xffb062, pointI: 0,
       glow: 0.92, win: false, bulb: 0.75, halo: 0.25, pool: 0.18, snowOp: 0.95,
@@ -2520,7 +2537,7 @@
     controls.autoRotateSpeed = 0.5;
     controls.zoomToCursor = false;
 
-    var AZ0 = c.az0 == null ? 0.52 : c.az0, POL0 = 1.02, fitD = 40, zoomF = 1;
+    var AZ0 = c.az0 == null ? 0.52 : c.az0, POL0 = c.pol0 || 1.02, fitD = 40, zoomF = 1;
     function frame(az, pol, d, ty, aspect) {
       var tanV = Math.tan(camera.fov / 2 * PI / 180), tanH = tanV * aspect;
       var dir = new THREE.Vector3(Math.sin(pol) * Math.sin(az), Math.cos(pol), Math.sin(pol) * Math.cos(az));
@@ -2727,7 +2744,7 @@
       dispose: dispose,
       setTheme: setTheme,
       /* extras for the demo page */
-      stats: function () { return { triangles: renderer.info.render.triangles, calls: renderer.info.render.calls, stalls: c.placedStalls, config: cfg, fit: (function(){var bb=new THREE.Box3().setFromPoints(fitPts);return [bb.min.toArray().map(Math.round),bb.max.toArray().map(Math.round), fitPts.length, fitD];})() }; }
+      stats: function () { return { triangles: renderer.info.render.triangles, calls: renderer.info.render.calls, stalls: c.placedStalls, config: cfg }; }
     };
   }
 
