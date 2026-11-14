@@ -689,5 +689,425 @@
       "https://wien.orf.at/stories/3377405/"
     ],
     "verified": "2026-11-14"
+  },
+  {
+    "id": "tuerkenschanzpark",
+    "name": "Weihnachtsmarkt im Türkenschanzpark",
+    "nameEn": "Christmas Market in Türkenschanzpark",
+    "location": "Türkenschanzpark (Peter-Jordan-Straße entrance)",
+    "district": 18,
+    "address": "Peter-Jordan-Straße / Dänenstraße, 1180 Wien",
+    "lat": 48.2347,
+    "lng": 16.3362,
+    "season": {
+      "start": "2026-11-13",
+      "end": "2026-12-23"
+    },
+    "hours": [
+      {
+        "dates": [
+          "2026-12-08"
+        ],
+        "open": "12:00",
+        "close": "21:00",
+        "label": "Public holiday"
+      },
+      {
+        "days": [
+          0,
+          6
+        ],
+        "open": "12:00",
+        "close": "21:00"
+      },
+      {
+        "days": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "open": "15:00",
+        "close": "21:00"
+      }
+    ],
+    "hoursNote": "Craft stalls close at 21:00; food and punch stands stay open until 22:00.",
+    "hoursConfidence": "likely",
+    "website": "https://www.weihnachtimpark.at",
+    "transit": [
+      "Bus 40A – Türkenschanzplatz",
+      "S45 Gersthof (12 min walk)"
+    ],
+    "size": "small",
+    "stalls": 21,
+    "popularity": 1,
+    "priceLevel": 1,
+    "summary": "A small neighbourhood market among the old trees of a romantic 19th-century park in Währing – about 20 huts by the Turkish fountain, a lit-up playground and almost no tourists.",
+    "bestFor": "Families with small kids, locals, a quiet walk",
+    "vibe": [
+      "neighbourly",
+      "quiet",
+      "leafy",
+      "family"
+    ],
+    "sells": [
+      "Punsch & Glühwein",
+      "Maroni",
+      "Waffeln",
+      "local crafts",
+      "Lebkuchen"
+    ],
+    "specials": [
+      "illuminated playground, two kids' carousels and a mini train",
+      "craft hut for children",
+      "set by the Yunus Emre fountain in a hilly landscape park"
+    ],
+    "tags": [
+      "quiet",
+      "kids",
+      "crafts"
+    ],
+    "photos": [
+      {
+        "src": "img/markets/tuerkenschanzpark/1.jpg",
+        "thumb": "img/markets/tuerkenschanzpark/1-thumb.jpg",
+        "w": 1280,
+        "h": 960,
+        "caption": "Türkenschanzpark pond in November (venue, outside market time)",
+        "author": "Wdvorak",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:T%C3%BCrkenschanzpark_Teich.JPG"
+      },
+      {
+        "src": "img/markets/tuerkenschanzpark/2.jpg",
+        "thumb": "img/markets/tuerkenschanzpark/2-thumb.jpg",
+        "w": 1280,
+        "h": 854,
+        "caption": "The park's fountain pond in summer 2026 (venue only)",
+        "author": "WWWeb.pix",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:T%C3%BCrkenschanzpark_Wien_-_Eindr%C3%BCcke_aus_2026_-_Teich_mit_Fontaine.jpg"
+      },
+      {
+        "src": "img/markets/tuerkenschanzpark/3.jpg",
+        "thumb": "img/markets/tuerkenschanzpark/3-thumb.jpg",
+        "w": 960,
+        "h": 1280,
+        "caption": "Old park lantern among autumn trees (venue, Nov 2014)",
+        "author": "Wdvorak",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:T%C3%BCrkenschanzpark_Laterne_(alt).JPG"
+      },
+      {
+        "src": "img/markets/tuerkenschanzpark/4.jpg",
+        "thumb": "img/markets/tuerkenschanzpark/4-thumb.jpg",
+        "w": 1280,
+        "h": 960,
+        "caption": "Art Nouveau park gate (venue, summer 2026)",
+        "author": "WWWeb.pix",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:T%C3%BCrkenschanzpark_Wien_-_Eindr%C3%BCcke_aus_2026_-_Eingangstor.jpg"
+      }
+    ],
+    "diorama": {
+      "landmark": "park",
+      "layout": "park",
+      "stalls": 7,
+      "features": [
+        "carousel",
+        "train",
+        "light-trees"
+      ]
+    },
+    "sources": [
+      "https://www.wien.info/en/now-on/events/christmas-market-in-tuerkenschanzpark-1135316",
+      "https://www.wien.gv.at/veranstaltungen/weihnachtsmarkt-tuerkenschanzpark",
+      "https://urlaub-magazin.at/weihnachtsmarkt-tuerkenschanzpark/",
+      "https://wien.orf.at/radio/stories/3379139/"
+    ],
+    "verified": "2026-11-14"
+  },
+  {
+    "id": "schwarzenbergplatz",
+    "name": "Weihnachtszauber am Schwarzenbergplatz",
+    "nameEn": "Christmas Magic at Schwarzenbergplatz",
+    "location": "Schwarzenbergplatz, around the Hochstrahlbrunnen",
+    "district": 4,
+    "address": "Schwarzenbergplatz (Hochstrahlbrunnen), 1040 Wien",
+    "lat": 48.1985,
+    "lng": 16.3755,
+    "season": {
+      "start": "2026-11-13",
+      "end": "2026-12-26"
+    },
+    "hours": [
+      {
+        "from": "2026-12-24",
+        "to": "2026-12-26",
+        "open": "11:00",
+        "close": "16:00",
+        "label": "Christmas holidays"
+      },
+      {
+        "dates": [
+          "2026-12-08"
+        ],
+        "open": "10:00",
+        "close": "21:00",
+        "label": "Public holiday"
+      },
+      {
+        "days": [
+          0,
+          6
+        ],
+        "open": "10:00",
+        "close": "21:00"
+      },
+      {
+        "days": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "open": "11:00",
+        "close": "21:00"
+      }
+    ],
+    "hoursNote": "New market in 2026 (replaces \"X-Mas Winterstories\"). 24–26 Dec hours from a single listing.",
+    "hoursConfidence": "likely",
+    "website": "https://www.wien.gv.at/veranstaltungen/weihnachtszauber-schwarzenbergplatz",
+    "transit": [
+      "Tram 2, 71, D – Schwarzenbergplatz",
+      "U1/U2/U4 Karlsplatz (8 min walk)"
+    ],
+    "size": "medium",
+    "stalls": null,
+    "popularity": 2,
+    "priceLevel": 2,
+    "summary": "Vienna's newest market (2026 premiere) rings the Hochstrahlbrunnen fountain on a grand Ringstraße square, with a stage and a light-strung \"Ballroom\" tent for live music.",
+    "bestFor": "Curious regulars, live music, a stop between Ring and Belvedere",
+    "vibe": [
+      "new",
+      "urban",
+      "musical",
+      "open square"
+    ],
+    "sells": [
+      "Punsch & Glühwein",
+      "Austrian Schmankerl",
+      "handicrafts",
+      "Christmas sweets"
+    ],
+    "specials": [
+      "stalls arranged around the historic Hochstrahlbrunnen fountain",
+      "fairy-lit \"Ballroom\" pavilion with live music",
+      "stage programme for adults and kids"
+    ],
+    "tags": [
+      "live-music",
+      "crafts"
+    ],
+    "photos": [
+      {
+        "src": "img/markets/schwarzenbergplatz/1.jpg",
+        "thumb": "img/markets/schwarzenbergplatz/1-thumb.jpg",
+        "w": 1280,
+        "h": 720,
+        "caption": "Hochstrahlbrunnen lit blue on a November night (venue only)",
+        "author": "oatsy40",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Blue_Fountain_(10729205223).jpg"
+      },
+      {
+        "src": "img/markets/schwarzenbergplatz/2.jpg",
+        "thumb": "img/markets/schwarzenbergplatz/2-thumb.jpg",
+        "w": 1280,
+        "h": 866,
+        "caption": "The fountain and colonnade at the square's south end (venue)",
+        "author": "Dennis G. Jarvis",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Austria-00291-_Soviet_War_Memorial_(9216752349).jpg"
+      },
+      {
+        "src": "img/markets/schwarzenbergplatz/3.jpg",
+        "thumb": "img/markets/schwarzenbergplatz/3-thumb.jpg",
+        "w": 1280,
+        "h": 682,
+        "caption": "Hochstrahlbrunnen with Ringstraße-era façades (venue, summer)",
+        "author": "Tokfo",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hochstrahlbrunnen_(7916)_IMG_6851.jpg"
+      },
+      {
+        "src": "img/markets/schwarzenbergplatz/4.jpg",
+        "thumb": "img/markets/schwarzenbergplatz/4-thumb.jpg",
+        "w": 1280,
+        "h": 853,
+        "caption": "Fountain and Schwarzenbergplatz in October (venue only)",
+        "author": "Marek Mróz",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2016-10_Wien_(30).jpg"
+      }
+    ],
+    "diorama": {
+      "landmark": "fountain",
+      "layout": "square",
+      "stalls": 10,
+      "features": [
+        "stage",
+        "light-trees",
+        "punch-pavilion"
+      ]
+    },
+    "sources": [
+      "https://www.wien.gv.at/veranstaltungen/weihnachtszauber-schwarzenbergplatz",
+      "https://www.ganz-wien.at/wien/maerkte/weihnachtszauber-am-schwarzenbergplatz.html",
+      "https://wien.orf.at/radio/stories/3379139/",
+      "https://www.regionalsuche.at/advent-wien-erleben-adventmaerkte/"
+    ],
+    "verified": "2026-11-14"
+  },
+  {
+    "id": "hirschstetten",
+    "name": "Weihnachtsausstellung und Adventmarkt Blumengärten Hirschstetten",
+    "nameEn": "Christmas Exhibition & Advent Market at Hirschstetten Flower Gardens",
+    "location": "Blumengärten Hirschstetten",
+    "district": 22,
+    "address": "Quadenstraße 15, 1220 Wien",
+    "lat": 48.244,
+    "lng": 16.476,
+    "season": {
+      "start": "2026-11-12",
+      "end": "2026-12-20"
+    },
+    "hours": [
+      {
+        "dates": [
+          "2026-12-07",
+          "2026-12-08"
+        ],
+        "open": "10:00",
+        "close": "20:00",
+        "label": "Extra days (Mon/Tue holiday)"
+      },
+      {
+        "days": [
+          0,
+          4,
+          5,
+          6
+        ],
+        "open": "10:00",
+        "close": "20:00"
+      }
+    ],
+    "hoursNote": "Thursday–Sunday only (plus 7 & 8 Dec); closed Mon–Wed. Free entry this year.",
+    "hoursConfidence": "confirmed",
+    "website": "https://www.wien.gv.at/umwelt/parks/veranstaltungen/",
+    "transit": [
+      "Bus 22A, 95A, 95B – Blumengärten Hirschstetten"
+    ],
+    "size": "medium",
+    "stalls": 50,
+    "popularity": 2,
+    "priceLevel": 1,
+    "summary": "Run by the city's own gardeners: a festive show in the greenhouses of the Hirschstetten flower gardens with 15 decorated scenes, a new light trail and an Advent market of 50-plus stalls – open Thursdays to Sundays only.",
+    "bestFor": "Families, plant lovers, a day out beyond the centre",
+    "vibe": [
+      "green",
+      "homely",
+      "family",
+      "out of town"
+    ],
+    "sells": [
+      "Christmas plants & wreaths",
+      "Advent decorations",
+      "honey & farm produce",
+      "Punsch",
+      "handicrafts"
+    ],
+    "specials": [
+      "Christmas exhibition with 15 themed scenes in the city greenhouses",
+      "new light trail through the gardens (2026)",
+      "free entry, run by Wiener Stadtgärten"
+    ],
+    "tags": [
+      "kids",
+      "crafts",
+      "quiet"
+    ],
+    "photos": [
+      {
+        "src": "img/markets/hirschstetten/1.jpg",
+        "thumb": "img/markets/hirschstetten/1-thumb.jpg",
+        "w": 1280,
+        "h": 967,
+        "caption": "The Palmenhaus glasshouse in autumn (venue, outside the season)",
+        "author": "Manfred Werner - Tsui",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Blumeng%C3%A4rten_Hirschstetten_Wien_2014_Palmenhaus_a.jpg"
+      },
+      {
+        "src": "img/markets/hirschstetten/2.jpg",
+        "thumb": "img/markets/hirschstetten/2-thumb.jpg",
+        "w": 1280,
+        "h": 853,
+        "caption": "Palmenhaus entrance, home of the Christmas show (venue)",
+        "author": "Manfred Werner - Tsui",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Blumeng%C3%A4rten_Hirschstetten_2016-02-21_Palmenhaus_a.jpg"
+      },
+      {
+        "src": "img/markets/hirschstetten/3.jpg",
+        "thumb": "img/markets/hirschstetten/3-thumb.jpg",
+        "w": 1280,
+        "h": 892,
+        "caption": "Main avenue of the flower gardens in early spring (venue)",
+        "author": "Invisigoth67",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Blumeng%C3%A4rten_Hirschstetten_Eingang.jpg"
+      },
+      {
+        "src": "img/markets/hirschstetten/4.jpg",
+        "thumb": "img/markets/hirschstetten/4-thumb.jpg",
+        "w": 1280,
+        "h": 898,
+        "caption": "Row of city-nursery greenhouses (venue, summer)",
+        "author": "HeinzLW",
+        "license": "CC BY-SA 3.0 at",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/at/deed.en",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Glashaeuser_Blumeng%C3%A4rten.jpg"
+      }
+    ],
+    "diorama": {
+      "landmark": "greenhouse",
+      "layout": "park",
+      "stalls": 10,
+      "features": [
+        "light-trees",
+        "big-tree"
+      ]
+    },
+    "sources": [
+      "https://www.ots.at/presseaussendung/OTS_20261101_OTS0005/zauberhafte-weihnachtszeit-in-den-blumengaerten-hirschstetten-weihnachtsausstellung-und-adventmarkt-oeffnen-am-12-november",
+      "https://www.vienna.at/vienna-city-gardens-open-christmas-world-in-hirschstetten/10819760",
+      "https://www.wien.info/de/aktuell/veranstaltungen/weihnachtsausstellung-und-weihnachtsmarkt-1001430"
+    ],
+    "verified": "2026-11-14"
   }
 ]
